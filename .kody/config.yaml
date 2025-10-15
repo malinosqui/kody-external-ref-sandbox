@@ -1,0 +1,10 @@
+reference_resolver:
+  max_bytes: 60000
+  follow_symlinks: false
+  strategies:
+    - exact_path
+    - glob         # opcional na sua implementação
+    - code_search  # opcional na sua implementação
+  anchors:
+    start: "KODY-BEGIN:"
+    end: "KODY-END:"

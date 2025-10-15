@@ -1,0 +1,9 @@
+{
+  "name": "kody-external-ref-sandbox",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build:prompt": "node scripts/build-prompt.js"
+  }
+}

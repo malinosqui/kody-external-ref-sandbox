@@ -1,0 +1,8 @@
+{
+  "allowed_statuses": [
+    "CREATED",
+    "APPROVED",
+    "REJECTED",
+    "SETTLED"
+  ]
+}

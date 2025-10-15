@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: Propostas API
+  version: "1.0"
+paths:
+  # KODY-BEGIN:PropostasPaths
+  /propostas:
+    post:
+      summary: Cria uma proposta
+      responses:
+        "201":
+          description: Criado
+        "400":
+          description: Requisição inválida
+  /propostas/{id}:
+    get:
+      summary: Busca uma proposta
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Não encontrado
+  # KODY-END:PropostasPaths

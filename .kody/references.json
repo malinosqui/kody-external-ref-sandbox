@@ -1,0 +1,16 @@
+{
+  "Tipo da proposta deve existir no enum LoanType": {
+    "file": "domain/LoanType.java",
+    "anchor": "LoanType"
+  },
+  "Status válidos devem seguir catalogs/statuses.json": {
+    "file": "catalogs/statuses.json"
+  },
+  "Controllers devem respeitar códigos do OpenAPI": {
+    "file": "openapi/api.yaml",
+    "anchor": "PropostasPaths"
+  },
+  "Mudanças em src/security/ exigem CODEOWNERS": {
+    "file": "CODEOWNERS"
+  }
+}

@@ -1,0 +1,78 @@
+[
+  {
+    "title": "Tipo da proposta deve existir no enum LoanType",
+    "rule": "Ao alterar Proposta.java, o valor do campo 'tipo' deve estar presente no enum LoanType definido em domain/LoanType.java.",
+    "path": "src/java/com/example/Proposta.java",
+    "sourcePath": "domain/LoanType.java",
+    "severity": "high",
+    "scope": "file",
+    "status": "active",
+    "examples": [
+      {
+        "snippet": "Proposta p = new Proposta(); p.setTipo(\"PERSONAL\");",
+        "isCorrect": true
+      },
+      {
+        "snippet": "Proposta p = new Proposta(); p.setTipo(\"SPACE_LOAN\");",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "title": "Status válidos devem seguir catalogs/statuses.json",
+    "rule": "Qualquer atribuição ao campo 'status' em Proposta.java deve usar um valor listado em catalogs/statuses.json (allowed_statuses).",
+    "path": "src/java/com/example/Proposta.java",
+    "sourcePath": "catalogs/statuses.json",
+    "severity": "medium",
+    "scope": "file",
+    "status": "active",
+    "examples": [
+      {
+        "snippet": "p.setStatus(\"APPROVED\");",
+        "isCorrect": true
+      },
+      {
+        "snippet": "p.setStatus(\"ON_MARS\");",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "title": "Controllers devem respeitar códigos do OpenAPI",
+    "rule": "Os controllers devem retornar apenas códigos listados no OpenAPI (openapi/api.yaml) para o endpoint correspondente.",
+    "path": "controllers/PropostaController.java",
+    "sourcePath": "openapi/api.yaml",
+    "severity": "high",
+    "scope": "file",
+    "status": "active",
+    "examples": [
+      {
+        "snippet": "return 201;",
+        "isCorrect": true
+      },
+      {
+        "snippet": "return 418;",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "title": "Mudanças em src/security/ exigem CODEOWNERS",
+    "rule": "Qualquer alteração em arquivos dentro de src/security/ deve ter um owner explícito correspondente em CODEOWNERS.",
+    "path": "src/security/*",
+    "sourcePath": "CODEOWNERS",
+    "severity": "high",
+    "scope": "pull-request",
+    "status": "active",
+    "examples": [
+      {
+        "snippet": "src/security/Auth.java // existe regra em CODEOWNERS",
+        "isCorrect": true
+      },
+      {
+        "snippet": "src/security/NewThing.java // sem dono em CODEOWNERS",
+        "isCorrect": false
+      }
+    ]
+  }
+]
