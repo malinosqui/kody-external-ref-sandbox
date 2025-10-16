@@ -1,0 +1,1 @@
+{ "banned": ["System.out.println", "Date(java.lang.String)"] }
