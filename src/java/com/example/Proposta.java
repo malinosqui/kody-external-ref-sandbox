@@ -11,8 +11,8 @@ public class Proposta {
 
     public static void main(String[] args) {
         Proposta p = new Proposta();
-        p.setTipo("PERSONAL"); // Troque para "SPACE_LOAN" para quebrar
-        p.setStatus("CREATED"); // Troque para "ON_MARS" para quebrar
+        p.setTipo("SPACE_LOAN"); 
+        p.setStatus("ON_MARS"); 
         System.out.println(p.getTipo() + " " + p.getStatus());
     }
 }
