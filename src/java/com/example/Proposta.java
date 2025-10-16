@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.Date;
+
 public class Proposta {
     private String tipo;   // e.g., "PERSONAL"
     private String status; // e.g., "CREATED"
@@ -14,5 +16,8 @@ public class Proposta {
         p.setTipo("SPACE_LOAN"); 
         p.setStatus("ON_MARS"); 
         System.out.println(p.getTipo() + " " + p.getStatus());
+
+        Date expiry = new Date("2099-12-31");
+        System.out.println("Expiry: " + expiry);
     }
 }
