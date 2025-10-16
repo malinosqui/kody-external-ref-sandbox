@@ -1,1 +1,81 @@
-{ "banned": ["System.out.println", "Date(java.lang.String)"] }
+{
+  "version": 1,
+  "banned": [
+    {
+      "id": "stdout.print",
+      "type": "method",
+      "pattern": "System.out.println",
+      "why": "Despadroniza logs e some em prod",
+      "fix": "Use logger.info/debug com MDC",
+      "severity": "medium"
+    },
+    {
+      "id": "date.string.ctor",
+      "type": "ctor",
+      "fqcn": "java.util.Date",
+      "args": ["java.lang.String"],
+      "why": "Construtor obsoleto e ambíguo",
+      "fix": "Use java.time + DateTimeFormatter",
+      "severity": "high"
+    },
+    {
+      "id": "apache.http.client",
+      "type": "import",
+      "prefix": "org.apache.http.",
+      "why": "Stack antiga; preferir Java 11+ HttpClient",
+      "fix": "java.net.http.HttpClient",
+      "severity": "medium"
+    },
+    {
+      "id": "joda.time",
+      "type": "import",
+      "prefix": "org.joda.time",
+      "why": "Substituída por java.time",
+      "fix": "java.time.*",
+      "severity": "medium"
+    },
+    {
+      "id": "md5.sha1",
+      "type": "regex",
+      "pattern": "MessageDigest\\.getInstance\\(\"(MD5|SHA-1)\"\\)",
+      "why": "Hashes quebrados/insuficientes",
+      "fix": "Use SHA-256/512 ou libs de KDF (bcrypt/argon2)",
+      "severity": "high"
+    },
+    {
+      "id": "random.insecure",
+      "type": "ctor",
+      "fqcn": "java.util.Random",
+      "why": "Não criptograficamente seguro",
+      "fix": "Use java.security.SecureRandom",
+      "severity": "high",
+      "context": { "purpose": "security" }
+    },
+    {
+      "id": "printStackTrace",
+      "type": "method",
+      "pattern": "printStackTrace",
+      "why": "Perde contexto e padronização de log",
+      "fix": "logger.error(\"msg\", e)",
+      "severity": "medium"
+    },
+    {
+      "id": "thread.sleep.controller",
+      "type": "method",
+      "pattern": "Thread.sleep",
+      "why": "Bloqueia thread no hot path HTTP",
+      "fix": "Não bloquear; use timeouts/async/retry",
+      "severity": "medium",
+      "context": { "pathGlob": "controllers/**" }
+    }
+  ],
+  "allowlist": [
+    {
+      "path": "src/java/com/example/legacy/**",
+      "ids": ["stdout.print"],
+      "until": "2025-12-31",
+      "reason": "Migração em andamento"
+    }
+  ],
+  "notes": "Lido como referência pelo Kody; a estrutura ajuda a explicar o porquê e como corrigir."
+}

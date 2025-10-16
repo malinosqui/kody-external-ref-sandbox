@@ -1,5 +1,5 @@
 ---
-title: "nenhum uso de métodos/classes marcadas como banidas"
+title: "Evitar APIs banidas do catálogo"
 scope: "file"            # "file" or "pull_request"
 path: []                 # list of globs. example: ["**/*.ts", "apps/web/**"]
 severity_min: "critical"     # "low", "medium", "high", "critical"
